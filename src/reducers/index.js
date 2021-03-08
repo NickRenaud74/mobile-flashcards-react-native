@@ -10,7 +10,7 @@ export default function decks(state = {}, action ) {
         case REMOVE_DECK:
             const newDeck = Object.keys(state).filter(deck => deck !== action.deck)
             return newDeck
-            
+
         case ADD_DECK:
             const title = action.deck
             return {
@@ -29,5 +29,7 @@ export default function decks(state = {}, action ) {
                     questions: [...state[deck].questions, card]
                 }
             }
+        default: 
+            return state
     }
 }
