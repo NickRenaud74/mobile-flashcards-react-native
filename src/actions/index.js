@@ -1,7 +1,7 @@
-const GET_DECKS = 'GET_DECKS'
-const REMOVE_DECK = 'REMOVE_DECK'
-const ADD_DECK = 'ADD_DECK'
-const ADD_CARD = 'ADD_CARD'
+export const GET_DECKS = 'GET_DECKS'
+export const REMOVE_DECK = 'REMOVE_DECK'
+export const ADD_DECK = 'ADD_DECK'
+export const ADD_CARD = 'ADD_CARD'
 
 export function getDecks(decks) {
     return {
