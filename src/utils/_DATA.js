@@ -1,4 +1,4 @@
-let decks = {
+export let decks = {
     Javascript: {
         title: 'Deck1',
         questions: [
