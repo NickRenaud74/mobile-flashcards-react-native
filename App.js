@@ -5,16 +5,18 @@ import { createStore, applyMiddleware } from 'redux'
 import thunk from 'redux-thunk'
 import reducer from './src/reducers'
 import { StyleSheet, Text, View } from 'react-native';
-
+import DeckList from './src/components/DeckList'
+import AsyncStorage from '@react-native-async-storage/async-storage'
 
 const store = createStore(reducer, applyMiddleware(thunk))
 
 export default function App() {
+
   return (
     <Provider store={store}>
       <View style={styles.container}>
-        <Text>MOBILE FLASHCARDS!</Text>
-        <StatusBar style="auto" />
+        <StatusBar style="dark" />
+        <DeckList />
       </View>
     </Provider>
   )
