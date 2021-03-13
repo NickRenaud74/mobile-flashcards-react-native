@@ -11,7 +11,7 @@ const initDecks = async () => {
         }
 }
 
-export const getDecks = async () => {
+export const _getDecks = async () => {
     try {
         const data = await AsyncStorage.getItem(STORAGE_KEY)
         return data !== null ? JSON.parse(data) : initDecks()
@@ -20,7 +20,7 @@ export const getDecks = async () => {
     }
 }
 
-export const getDeck = async(title) => {
+export const _getDeck = async(title) => {
     try {
         const allDecks = await AsyncStorage.getItem(STORAGE_KEY)
         const deckData = JSON.parse(allDecks)
@@ -30,7 +30,7 @@ export const getDeck = async(title) => {
     }
 }
 
-export const saveDeckTitle = async(deckTitle) => {
+export const _saveDeckTitle = async(deckTitle) => {
     const newDeck = {
         title: deckTitle,
         questions: []
@@ -44,7 +44,7 @@ export const saveDeckTitle = async(deckTitle) => {
     }
 }
 
-export const addCardToDeck = async(title, card) => {
+export const _addCardToDeck = async(title, card) => {
     try {
         const deck = await getDeck(title)
         await AsyncStorage.mergeItem(STORAGE_KEY, JSON.stringify({
@@ -58,7 +58,7 @@ export const addCardToDeck = async(title, card) => {
     }
 }
 
-export const removeDeck = async(key) => {
+export const _deleteDeck = async(key) => {
     try {
         const decks = await AsyncStorage.getItem(STORAGE_KEY)
         const deckData = JSON.parse(decks)
