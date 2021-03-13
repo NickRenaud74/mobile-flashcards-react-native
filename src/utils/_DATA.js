@@ -1,6 +1,6 @@
 export let decks = {
     Javascript: {
-        title: 'Deck1',
+        title: 'Javascript',
         questions: [
             {
                 question: 'What is hoisting in Javascript?',
