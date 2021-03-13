@@ -1,12 +1,21 @@
+import { _getDecks } from '../utils/api'
+
 export const GET_DECKS = 'GET_DECKS'
 export const REMOVE_DECK = 'REMOVE_DECK'
 export const ADD_DECK = 'ADD_DECK'
 export const ADD_CARD = 'ADD_CARD'
 
-export function getDecks(decks) {
+function getDecks(decks) {
     return {
         type: GET_DECKS,
         decks
+    }
+}
+
+export function getData() {
+    return async (dispatch) => {
+        const data = await _getDecks()
+        dispatch(getDecks(data))
     }
 }
 
