@@ -4,6 +4,7 @@ import { useSelector, useDispatch } from 'react-redux'
 import { Header } from 'react-native-elements'
 import { getData } from '../actions'
 import { blue, gray, white } from '../utils/colors'
+import AppHeader from './AppHeader'
 
 
 function DeckList() {
@@ -25,17 +26,7 @@ function DeckList() {
 
     return (
         <View style={styles.container}>
-            <Header 
-                placement='center'
-                centerComponent={{
-                     text: 'Deck List', 
-                     style: {
-                         color: white,
-                         fontSize: 28
-                        }
-                    }}
-                containerStyle={{backgroundColor: blue }}
-            />
+            <AppHeader headerText='Deck List' />
             <FlatList 
                 data={Object.keys(decks)}
                 renderItem={renderItem}
