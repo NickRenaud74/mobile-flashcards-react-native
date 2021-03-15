@@ -1,9 +1,9 @@
 import React, { useEffect } from 'react'
-import { TouchableOpacity, Text, SafeAreaView , FlatList, StyleSheet } from 'react-native'
+import { TouchableOpacity, Text, View , FlatList, StyleSheet } from 'react-native'
 import { useSelector, useDispatch } from 'react-redux'
 import { Header } from 'react-native-elements'
 import { getData } from '../actions'
-import { blue, gray } from '../utils/colors'
+import { blue, gray, white } from '../utils/colors'
 
 
 function DeckList() {
@@ -11,7 +11,7 @@ function DeckList() {
     const dispatch = useDispatch()
 
     useEffect(() => {
-      dispatch(getData())
+        dispatch(getData())
     }, [])
   
     function renderItem({ item }) {
@@ -24,13 +24,13 @@ function DeckList() {
     }
 
     return (
-        <SafeAreaView style={styles.container}>
+        <View style={styles.container}>
             <Header 
                 placement='center'
                 centerComponent={{
                      text: 'Deck List', 
                      style: {
-                         color: '#000',
+                         color: white,
                          fontSize: 28
                         }
                     }}
@@ -41,7 +41,7 @@ function DeckList() {
                 renderItem={renderItem}
                 keyExtractor={item => item}
             />
-        </SafeAreaView>
+        </View>
     )
 }
 
