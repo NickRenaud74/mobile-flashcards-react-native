@@ -3,8 +3,10 @@ import React from 'react';
 import { Provider } from 'react-redux'
 import { createStore, applyMiddleware } from 'redux'
 import thunk from 'redux-thunk'
+import { StyleSheet, Text, View } from 'react-native'
+import { NavigationContainer } from '@react-navigation/native'
 import reducer from './src/reducers'
-import { StyleSheet, Text, View } from 'react-native';
+import TabNav from './src/components/TabNav'
 import DeckList from './src/components/DeckList'
 import AsyncStorage from '@react-native-async-storage/async-storage'
 
@@ -14,10 +16,10 @@ export default function App() {
 
   return (
     <Provider store={store}>
-      <View style={styles.container}>
-        <StatusBar style="dark" />
-        <DeckList />
-      </View>
+      <StatusBar style='light' />
+      <NavigationContainer>
+        <TabNav />
+      </NavigationContainer>
     </Provider>
   )
 }
@@ -29,4 +31,4 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'center',
   },
-});
+})
