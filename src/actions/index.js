@@ -1,4 +1,4 @@
-import { _getDecks } from '../utils/api'
+import { _getDecks, _saveDeckTitle } from '../utils/api'
 
 export const GET_DECKS = 'GET_DECKS'
 export const REMOVE_DECK = 'REMOVE_DECK'
@@ -26,10 +26,17 @@ export function removeDeck(deck) {
     }
 }
 
-export function addDeck(deck) {
+function addDeck(deck) {
     return {
         type: ADD_DECK,
         deck
+    }
+}
+
+export function saveDeck(deck) {
+    return async (dispatch) => {
+        await _saveDeckTitle(deck)
+        dispatch(addDeck(deck))
     }
 }
 
