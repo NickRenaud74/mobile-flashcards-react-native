@@ -1,16 +1,15 @@
 import { StatusBar } from 'expo-status-bar';
 import React from 'react';
 import { Provider } from 'react-redux'
-import { createStore, applyMiddleware } from 'redux'
-import thunk from 'redux-thunk'
+import { createStore } from 'redux'
 import { StyleSheet, Text, View } from 'react-native'
 import { NavigationContainer } from '@react-navigation/native'
 import reducer from './src/reducers'
+import middleware from './src/middleware'
 import TabNav from './src/components/TabNav'
-import DeckList from './src/components/DeckList'
 import AsyncStorage from '@react-native-async-storage/async-storage'
 
-const store = createStore(reducer, applyMiddleware(thunk))
+const store = createStore(reducer, middleware)
 
 export default function App() {
 
