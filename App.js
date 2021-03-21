@@ -6,7 +6,7 @@ import { StyleSheet, Text, View } from 'react-native'
 import { NavigationContainer } from '@react-navigation/native'
 import reducer from './src/reducers'
 import middleware from './src/middleware'
-import TabNav from './src/components/TabNav'
+import StackNav from './src/components/StackNav'
 import AsyncStorage from '@react-native-async-storage/async-storage'
 
 const store = createStore(reducer, middleware)
@@ -17,7 +17,7 @@ export default function App() {
     <Provider store={store}>
       <StatusBar style='light' />
       <NavigationContainer>
-        <TabNav />
+        <StackNav />
       </NavigationContainer>
     </Provider>
   )
