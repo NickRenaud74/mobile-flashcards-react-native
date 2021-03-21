@@ -8,9 +8,9 @@ export default function decks(state = {}, action ) {
                 ...action.decks
             }
         case REMOVE_DECK:
-            const newDeck = Object.keys(state).filter(deck => deck !== action.deck)
-            return newDeck
-
+            let newState = {...state}
+            delete newState[action.deck]
+            return newState
         case ADD_DECK:
             const title = action.deck
             return {
