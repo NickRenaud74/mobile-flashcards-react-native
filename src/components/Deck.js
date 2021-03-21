@@ -10,7 +10,8 @@ function Deck({ route, navigation }) {
     const dispatch = useDispatch()
 
     async function handleDeleteDeck() {
-        await dispatch(deleteDeck(deck.title))
+        dispatch(deleteDeck(deck.title))
+        navigation.navigate('Deck List')
     }
 
     return (
