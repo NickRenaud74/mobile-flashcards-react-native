@@ -1,33 +1,46 @@
-import React, { useEffect } from 'react'
-import { TouchableOpacity, Text, View , FlatList, StyleSheet } from 'react-native'
+import React, { useEffect, useState } from 'react'
+import { TouchableOpacity, Text, View, FlatList, StyleSheet } from 'react-native'
 import { useSelector, useDispatch } from 'react-redux'
-import { Header } from 'react-native-elements'
 import { getData } from '../actions'
-import { blue, gray, white } from '../utils/colors'
+import { blue, gray } from '../utils/colors'
+import AppLoading from 'expo-app-loading'
 import AppHeader from './AppHeader'
 
 
-function DeckList() {
+function DeckList({ navigation }) {
+    const [ready, setReady] = useState(false)
     const decks = useSelector(state => state)
     const dispatch = useDispatch()
 
+    async function handleGetData() {
+        await dispatch(getData())
+        setReady(true)
+    }
+
     useEffect(() => {
-        dispatch(getData())
+        handleGetData()
     }, [])
-  
+
     function renderItem({ item }) {
-        return (
-            <TouchableOpacity style={styles.item}>
-                <Text style={styles.deckTitle}>{decks[item].title}</Text>
-                <Text style={styles.deckCards} >{decks[item].questions.length} cards </Text>
-            </TouchableOpacity>
-        )
+            return (
+                <TouchableOpacity
+                    style={styles.item}
+                    onPress={() => navigation.navigate('Deck', { deck: decks[item] })}
+                >
+                    <Text style={styles.deckTitle}>{decks[item].title}</Text>
+                    <Text style={styles.deckCards} >{decks[item].questions.length} cards </Text>
+                </TouchableOpacity>
+            )
+    }
+
+    if (ready === false) {
+        return <AppLoading />
     }
 
     return (
         <View style={styles.container}>
             <AppHeader headerText='Deck List' />
-            <FlatList 
+            <FlatList
                 data={Object.keys(decks)}
                 renderItem={renderItem}
                 keyExtractor={item => item}
@@ -42,7 +55,7 @@ const styles = StyleSheet.create({
     },
     item: {
         margin: 15,
-        paddingBottom: 15, 
+        paddingBottom: 15,
         borderBottomColor: gray,
         borderBottomWidth: 2
     },
