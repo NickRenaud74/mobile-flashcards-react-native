@@ -39,7 +39,7 @@ function DeckList({ navigation }) {
 
     return (
         <View style={styles.container}>
-            <AppHeader headerText='Deck List' />
+            <AppHeader headerText='Flashcards' />
             <FlatList
                 data={Object.keys(decks)}
                 renderItem={renderItem}
