@@ -2,6 +2,7 @@ import React from 'react'
 import { createStackNavigator } from '@react-navigation/stack'
 import TabNav from './TabNav'
 import Deck from './Deck'
+import AddCard from './AddCard'
 import { blue, white } from '../utils/colors'
 
 
@@ -27,7 +28,11 @@ function StackNav() {
             <Stack.Screen 
                 name='Deck'
                 component={Deck}
-                options={({ route }) => ({title: route.params.deck.title})}
+                options={({ route }) => ({title: route.params.deckTitle})}
+            />
+            <Stack.Screen 
+                name='Add Card'
+                component={AddCard}
             />
         </Stack.Navigator>
     )
