@@ -25,7 +25,7 @@ function DeckList({ navigation }) {
             return (
                 <TouchableOpacity
                     style={styles.item}
-                    onPress={() => navigation.navigate('Deck', { deck: decks[item] })}
+                    onPress={() => navigation.navigate('Deck', { deckTitle: decks[item].title })}
                 >
                     <Text style={styles.deckTitle}>{decks[item].title}</Text>
                     <Text style={styles.deckCards} >{decks[item].questions.length} cards </Text>
