@@ -1,10 +1,9 @@
 import React, {useState} from 'react'
 import { useDispatch } from 'react-redux'
 import { Text, View, StyleSheet, Alert } from 'react-native'
-import { Input, Button} from 'react-native-elements'
+import { Input } from 'react-native-elements'
 import AppHeader from './AppHeader'
 import { saveDeck } from '../actions'
-import { blue } from '../utils/colors'
 import MainButton from './MainButton'
 
 function AddDeck({ navigation }) {
