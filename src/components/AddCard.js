@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import { useDispatch } from 'react-redux'
-import MainButton from './MainButton'
+import CustomButton from './CustomButton'
 import { View, StyleSheet, Alert } from 'react-native'
 import { Input } from 'react-native-elements'
 import { addCardToDeck } from '../actions'
@@ -42,7 +42,7 @@ function AddCard({ route, navigation }) {
                 value={answer}
                 onChangeText={text => setAnswer(text)}
             />
-            <MainButton 
+            <CustomButton 
                 title='Submit Card'
                 onPress={handleSubmit}
             />

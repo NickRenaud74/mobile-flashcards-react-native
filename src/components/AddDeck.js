@@ -4,7 +4,8 @@ import { Text, View, StyleSheet, Alert } from 'react-native'
 import { Input } from 'react-native-elements'
 import AppHeader from './AppHeader'
 import { saveDeck } from '../actions'
-import MainButton from './MainButton'
+import CustomButton from './CustomButton'
+import { blue } from '../utils/colors'
 
 function AddDeck({ navigation }) {
     const [deckName, setDeckName] = useState('')
@@ -34,9 +35,10 @@ function AddDeck({ navigation }) {
                 onChangeText={text => setDeckName(text)}
                 value={deckName}
             />
-            <MainButton  
+            <CustomButton  
                 title='Create Deck'
                 onPress={saveDeckTitle}
+                color={blue}
             />
         </View>
     )

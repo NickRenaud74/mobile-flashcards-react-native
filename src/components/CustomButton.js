@@ -1,15 +1,14 @@
 import React from 'react' 
 import { Button } from 'react-native-elements'
 import { StyleSheet } from 'react-native'
-import { blue } from '../utils/colors'
 
-function MainButton({ title, onPress }) {
+function CustomButton({ title, onPress, color }) {
     return (
         <Button 
         title={title}
         type='solid'
         raised
-        buttonStyle={styles.createDeck}
+        buttonStyle={[styles.createDeck, {backgroundColor: color}]}
         containerStyle={styles.btnContainer}
         titleStyle={{fontSize: 22}}
         onPress={onPress}
@@ -19,7 +18,6 @@ function MainButton({ title, onPress }) {
 
 const styles = StyleSheet.create({
     createDeck: {
-        backgroundColor: blue,
         padding: 15,
         borderRadius: 10
     },
@@ -29,4 +27,4 @@ const styles = StyleSheet.create({
     }
 })
 
-export default MainButton
+export default CustomButton
