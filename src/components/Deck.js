@@ -1,17 +1,19 @@
 import React from 'react'
-import { useDispatch } from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux'
+import { CommonActions } from '@react-navigation/native'
 import { Text, View, StyleSheet } from 'react-native'
 import { Button } from 'react-native-elements'
 import { blue, gray, red } from '../utils/colors'
 import { deleteDeck } from '../actions'
+import MainButton from './MainButton'
 
 function Deck({ route, navigation }) {
-    const { deck } = route.params
+    const { deckTitle } = route.params
+    const deck = useSelector(state => state[deckTitle])
     const dispatch = useDispatch()
 
-    async function handleDeleteDeck() {
+    function handleDeleteDeck() {
         dispatch(deleteDeck(deck.title))
-        navigation.navigate('Deck List')
     }
 
     return (
@@ -21,20 +23,11 @@ function Deck({ route, navigation }) {
                 <Text style={styles.deckCards} >{deck.questions.length} cards </Text>
             </View>
             <View>
-                <Button
+                <MainButton 
                     title='Add Card'
-                    type='solid'
-                    raised
-                    buttonStyle={{ backgroundColor: blue }}
-                    containerStyle={{ margin: 20 }}
+                    onPress={() => navigation.navigate('Add Card', {deck: deck})}
                 />
-                <Button
-                    title='Start Quiz'
-                    type='solid'
-                    raised
-                    buttonStyle={{ backgroundColor: blue }}
-                    containerStyle={{ margin: 20 }}
-                />
+                <MainButton title='Start Quiz' />
                 <Button
                     title='Delete Deck'
                     type='clear'
