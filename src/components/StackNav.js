@@ -3,6 +3,7 @@ import { createStackNavigator } from '@react-navigation/stack'
 import TabNav from './TabNav'
 import Deck from './Deck'
 import AddCard from './AddCard'
+import EmptyDeck from './EmptyDeck'
 import { blue, white } from '../utils/colors'
 
 
@@ -23,7 +24,7 @@ function StackNav() {
             <Stack.Screen 
                 name='Home' 
                 component={TabNav}  
-                options={{ headerShown: false }} 
+                options={{ headerShown: false, title: 'Flashcards' }} 
             />
             <Stack.Screen 
                 name='Deck'
@@ -33,6 +34,10 @@ function StackNav() {
             <Stack.Screen 
                 name='Add Card'
                 component={AddCard}
+            />
+            <Stack.Screen
+                name='Empty Deck'
+                component={EmptyDeck}
             />
         </Stack.Navigator>
     )
