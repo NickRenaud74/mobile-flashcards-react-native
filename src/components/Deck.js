@@ -1,4 +1,4 @@
-import React, { useLayoutEffect } from 'react'
+import React from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { Text, View, StyleSheet } from 'react-native'
 import { Button } from 'react-native-elements'
