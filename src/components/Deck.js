@@ -4,7 +4,7 @@ import { Text, View, StyleSheet } from 'react-native'
 import { Button } from 'react-native-elements'
 import { blue, gray, red } from '../utils/colors'
 import { deleteDeck } from '../actions'
-import MainButton from './MainButton'
+import CustomButton from './CustomButton'
 
 function Deck({ route, navigation }) {
     const { deckTitle } = route.params
@@ -17,6 +17,15 @@ function Deck({ route, navigation }) {
         navigation.navigate('Home')
     }
 
+    function handleStart() {
+        if (deck.questions.length === 0 ) {
+            navigation.navigate('Empty Deck')
+        } else {
+            navigation.navigate('Quiz', {deckQuiz: deck})
+        }
+        
+    }
+
     return (
         deck ?
         <View style={styles.container}> 
@@ -25,11 +34,16 @@ function Deck({ route, navigation }) {
                 <Text style={styles.deckCards} >{deck.questions.length} cards </Text>
             </View>
             <View>
-                <MainButton 
+                <CustomButton 
                     title='Add Card'
                     onPress={() => navigation.navigate('Add Card', {deck: deck})}
+                    color={blue}
                 />
-                <MainButton title='Start Quiz' />
+                <CustomButton 
+                    title='Start Quiz'
+                    onPress={handleStart}
+                    color={blue}
+                />
                 <Button
                     title='Delete Deck'
                     type='clear'
