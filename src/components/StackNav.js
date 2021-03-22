@@ -5,6 +5,7 @@ import Deck from './Deck'
 import AddCard from './AddCard'
 import EmptyDeck from './EmptyDeck'
 import { blue, white } from '../utils/colors'
+import Quiz from './Quiz'
 
 
 const Stack = createStackNavigator()
@@ -38,6 +39,10 @@ function StackNav() {
             <Stack.Screen
                 name='Empty Deck'
                 component={EmptyDeck}
+            />
+            <Stack.Screen 
+                name='Quiz'
+                component={Quiz}
             />
         </Stack.Navigator>
     )
