@@ -1,10 +1,11 @@
 import React, {useState} from 'react'
 import { useDispatch } from 'react-redux'
-import { Text, View, StyleSheet, TouchableOpacity, Alert } from 'react-native'
-import { Input } from 'react-native-elements'
+import { Text, View, StyleSheet, Alert } from 'react-native'
+import { Input, Button} from 'react-native-elements'
 import AppHeader from './AppHeader'
 import { saveDeck } from '../actions'
-import { blue, white } from '../utils/colors'
+import { blue } from '../utils/colors'
+import MainButton from './MainButton'
 
 function AddDeck({ navigation }) {
     const [deckName, setDeckName] = useState('')
@@ -29,13 +30,15 @@ function AddDeck({ navigation }) {
             <Text style={styles.txt}>What is the name of your deck?</Text>
             <Input 
                 style={styles.deckName}
+                inputContainerStyle={{borderRadius: 10}}
                 placeholder='Deck Name'
                 onChangeText={text => setDeckName(text)}
                 value={deckName}
             />
-            <TouchableOpacity style={styles.submit} onPress={saveDeckTitle} >
-                <Text style={styles.btnText} >Create Deck</Text>
-            </TouchableOpacity>
+            <MainButton  
+                title='Create Deck'
+                onPress={saveDeckTitle}
+            />
         </View>
     )
 }
@@ -52,18 +55,8 @@ const styles = StyleSheet.create({
     deckName: {
         marginTop: 20,
         borderWidth: 2,
-        padding: 15
-    },      
-    submit: {
-        backgroundColor: blue,
-        padding: 10,
         borderRadius: 10,
-        margin: 40
-    },
-    btnText: {
-        color: white,
-        fontSize: 22,
-        textAlign: 'center'
+        padding: 15
     }
 })
 
