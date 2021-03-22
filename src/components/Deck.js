@@ -1,6 +1,5 @@
-import React from 'react'
+import React, { useLayoutEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
-import { CommonActions } from '@react-navigation/native'
 import { Text, View, StyleSheet } from 'react-native'
 import { Button } from 'react-native-elements'
 import { blue, gray, red } from '../utils/colors'
@@ -12,12 +11,15 @@ function Deck({ route, navigation }) {
     const deck = useSelector(state => state[deckTitle])
     const dispatch = useDispatch()
 
+
     function handleDeleteDeck() {
         dispatch(deleteDeck(deck.title))
+        navigation.navigate('Home')
     }
 
     return (
-        <View style={styles.container}>
+        deck ?
+        <View style={styles.container}> 
             <View>
                 <Text style={styles.deckTitle}>{deck.title}</Text>
                 <Text style={styles.deckCards} >{deck.questions.length} cards </Text>
@@ -37,6 +39,7 @@ function Deck({ route, navigation }) {
                 />
             </View>
         </View>
+        : null
     )
 }
 
