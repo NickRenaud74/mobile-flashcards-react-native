@@ -1,12 +1,11 @@
 import React, { useState, useRef } from 'react'
-import { Text, View, StyleSheet, Animated, ScrollView } from 'react-native'
+import { Text, View, StyleSheet, Animated } from 'react-native'
 import { Button } from 'react-native-elements'
-import { blue, gray, green, red } from '../utils/colors'
+import { blue, green, red } from '../utils/colors'
 import CustomButton from './CustomButton'
 
 function Quiz({ route, navigation }) {
     const { deckQuiz } = route.params
-    const [answered, setAnswered] = useState(0)
     const [score, setScore] = useState(0)
     const [questionIndex, setQuestionIndex] = useState(0)
     const [showAnswer, setShowAnswer] = useState(false)
@@ -34,27 +33,25 @@ function Quiz({ route, navigation }) {
     function fadeOut() {
         Animated.timing(visible, {
             toValue: 0,
-            duration: 500,
+            duration: 300,
             useNativeDriver: true
         }).start()
     }
 
     function reset() {
-        setAnswered(0)
         setQuestionIndex(0)
         setScore(0)
     }
 
-    function getNextQuestion() {
-        if (answered === deckQuiz.questions.length) {
+    async function getNextQuestion() {
+        setShowAnswer(false)
+        if (questionIndex + 1 === deckQuiz.questions.length) {
             navigation.navigate('Score', {
-                score: score,
-                questions: deckQuiz.questions.length,
-                reset: reset()
-            })
+                 score: score,
+                 questions: deckQuiz.questions.length,
+                 reset: reset()
+             })
         }
-        //set answered
-        setAnswered(prevAnswered => prevAnswered + 1)
         //get next question
         setQuestionIndex(prevIndex => prevIndex + 1)
     }
@@ -63,7 +60,7 @@ function Quiz({ route, navigation }) {
         questionIndex > deckQuiz.questions.length - 1 ? null :
             <View style={styles.container}>
                 <Text style={styles.questIndex}>
-                    {`${answered} / ${deckQuiz.questions.length}`}
+                    {`${questionIndex + 1} / ${deckQuiz.questions.length}`}
                 </Text>
                 <View>
                     <Text style={styles.question}>
@@ -112,12 +109,10 @@ const styles = StyleSheet.create({
         fontSize: 22
     },
     answer: {
-        borderWidth: 2,
         padding: 10,
-        backgroundColor: 'rgba(0,0,0,0.1)',
         marginLeft: 15,
         marginRight: 15,
-    }
+    },
 })
 
 export default Quiz
