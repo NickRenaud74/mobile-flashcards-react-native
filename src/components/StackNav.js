@@ -45,10 +45,6 @@ function StackNav() {
                 name='Quiz'
                 component={Quiz}
             />
-            <Stack.Screen 
-                name='Score'
-                component={Score}
-            />
         </Stack.Navigator>
     )
 }

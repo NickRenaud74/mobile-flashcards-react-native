@@ -3,6 +3,7 @@ import { Text, View, StyleSheet, Animated } from 'react-native'
 import { Button } from 'react-native-elements'
 import { blue, green, red } from '../utils/colors'
 import CustomButton from './CustomButton'
+import Score from './Score'
 
 function Quiz({ route, navigation }) {
     const { deckQuiz } = route.params
@@ -45,19 +46,17 @@ function Quiz({ route, navigation }) {
 
     async function getNextQuestion() {
         setShowAnswer(false)
-        if (questionIndex + 1 === deckQuiz.questions.length) {
-            navigation.navigate('Score', {
-                 score: score,
-                 questions: deckQuiz.questions.length,
-                 reset: reset()
-             })
-        }
         //get next question
         setQuestionIndex(prevIndex => prevIndex + 1)
     }
 
     return (
-        questionIndex > deckQuiz.questions.length - 1 ? null :
+        questionIndex > deckQuiz.questions.length - 1 
+        ? 
+        <Score score={score}
+        questions={deckQuiz.questions.length}
+        reset={reset} /> 
+        :
             <View style={styles.container}>
                 <Text style={styles.questIndex}>
                     {`${questionIndex + 1} / ${deckQuiz.questions.length}`}

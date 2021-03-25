@@ -1,8 +1,7 @@
 import React from 'react'
 import { View, Text, StyleSheet } from 'react-native'
 
-function Score({route}) {
-    const { score, questions, reset} = route.params
+function Score({score, questions, reset}) {
     const percentage = Math.round(score / questions * 100)
     return (
         <View style={styles.container}>
