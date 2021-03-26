@@ -13,7 +13,6 @@ function Quiz({ route }) {
     const visible = useRef(new Animated.Value(0)).current
 
     function handleCorrect() {
-        //set score
         setScore(prevScore => prevScore + 1)
         getNextQuestion()
     }
@@ -46,7 +45,6 @@ function Quiz({ route }) {
 
     async function getNextQuestion() {
         setShowAnswer(false)
-        //get next question
         setQuestionIndex(prevIndex => prevIndex + 1)
     }
 
