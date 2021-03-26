@@ -6,7 +6,6 @@ import AddCard from './AddCard'
 import EmptyDeck from './EmptyDeck'
 import { blue, white } from '../utils/colors'
 import Quiz from './Quiz'
-import Score from './Score'
 
 
 const Stack = createStackNavigator()
