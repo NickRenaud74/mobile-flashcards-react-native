@@ -5,7 +5,7 @@ import { blue, green, red } from '../utils/colors'
 import CustomButton from './CustomButton'
 import Score from './Score'
 
-function Quiz({ route, navigation }) {
+function Quiz({ route }) {
     const { deckQuiz } = route.params
     const [score, setScore] = useState(0)
     const [questionIndex, setQuestionIndex] = useState(0)
