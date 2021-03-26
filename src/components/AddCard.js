@@ -4,6 +4,7 @@ import CustomButton from './CustomButton'
 import { View, StyleSheet, Alert } from 'react-native'
 import { Input } from 'react-native-elements'
 import { addCardToDeck } from '../actions'
+import { blue, white } from '../utils/colors'
 
 function AddCard({ route, navigation }) {
     const [question, setQuestion] = useState('')
@@ -45,6 +46,7 @@ function AddCard({ route, navigation }) {
             <CustomButton 
                 title='Submit Card'
                 onPress={handleSubmit}
+                color={blue}
             />
         </View>
     )
@@ -58,7 +60,8 @@ const styles = StyleSheet.create({
     txtInput: {
         borderWidth: 2,
         borderRadius: 10,
-        padding: 15
+        padding: 15,
+        backgroundColor: white
     },
     answer: {
         height: 100,
