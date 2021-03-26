@@ -14,8 +14,8 @@ function AddDeck({ navigation }) {
     function saveDeckTitle() {
         if (deckName.trim() !== '' ) {
             dispatch(saveDeck(deckName))
+            navigation.navigate('Deck', {deckTitle: deckName})
             setDeckName('')
-            navigation.navigate('Deck List')
         } else {
             Alert.alert (
                 'Deck Name Missing',
