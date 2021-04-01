@@ -29,7 +29,7 @@ function Score({ score, questions, reset }) {
                 color={blue}
                 shadowColor="#999"
                 bgColor="#fff"
-                outerCircleStyle={{ margin: 60, textAlign: 'center'}}
+                outerCircleStyle={{ margin: 60}}
             >
                 <Text style={styles.percentText}>{`${percentage} %`}</Text>
             </ProgressCircle>
