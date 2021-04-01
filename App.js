@@ -8,22 +8,16 @@ import reducer from './src/reducers'
 import middleware from './src/middleware'
 import StackNav from './src/components/StackNav'
 import AsyncStorage from '@react-native-async-storage/async-storage'
-import * as Notifications from 'expo-notifications';
-import { requestPermissionsAsync } from './src/utils/notifications'
+import { requestPermissionsAsync, allowsNotificationsAsync } from './src/utils/notifications'
 
 const store = createStore(reducer, middleware)
 
 export default function App() {
 
-  Notifications.setNotificationHandler({
-    handleNotification: async () => ({
-      shouldShowAlert: true,
-      shouldPlaySound: false,
-      shouldSetBadge: false,
-    })
-  })
+  //To re-initialize data, un-comment this line
+  //AsyncStorage.clear()
 
-  useEffect(() => { requestPermissionsAsync() })
+  useEffect(() => { allowsNotificationsAsync() ? null : requestPermissionsAsync() })
 
   return (
     <Provider store={store}>

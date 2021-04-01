@@ -29,6 +29,14 @@ export async function requestPermissionsAsync() {
 
 export function createNotification() {
 
+    Notifications.setNotificationHandler({
+        handleNotification: async () => ({
+          shouldShowAlert: true,
+          shouldPlaySound: false,
+          shouldSetBadge: false,
+        })
+    })
+
     const trigger = new Date()
     trigger.setDate(trigger.getDate() + 1)
     trigger.setHours(24)
