@@ -7,7 +7,6 @@ import EmptyDeck from './EmptyDeck'
 import { blue, white } from '../utils/colors'
 import Quiz from './Quiz'
 
-
 const Stack = createStackNavigator()
 
 function StackNav() {
@@ -17,9 +16,12 @@ function StackNav() {
             screenOptions={{
                 headerStyle: {
                     backgroundColor: blue,
-                    height: 75
+                    height: 100
                 },
-                headerTintColor: white
+                headerTintColor: white,
+                headerTitleStyle: {
+                    fontSize: 24,
+                }
             }}
         >
             <Stack.Screen 
