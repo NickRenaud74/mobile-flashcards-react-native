@@ -1,5 +1,5 @@
 import { StatusBar } from 'expo-status-bar';
-import React from 'react';
+import React, { useEffect } from 'react';
 import { Provider } from 'react-redux'
 import { createStore } from 'redux'
 import { StyleSheet } from 'react-native'
@@ -8,10 +8,22 @@ import reducer from './src/reducers'
 import middleware from './src/middleware'
 import StackNav from './src/components/StackNav'
 import AsyncStorage from '@react-native-async-storage/async-storage'
+import * as Notifications from 'expo-notifications';
+import { requestPermissionsAsync } from './src/utils/notifications'
 
 const store = createStore(reducer, middleware)
 
 export default function App() {
+
+  Notifications.setNotificationHandler({
+    handleNotification: async () => ({
+      shouldShowAlert: true,
+      shouldPlaySound: false,
+      shouldSetBadge: false,
+    })
+  })
+
+  useEffect(() => { requestPermissionsAsync() })
 
   return (
     <Provider store={store}>
